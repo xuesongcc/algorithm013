@@ -33,16 +33,37 @@ var twoSum = function(nums, target) {
     }
 };
 /**
- * 两数旋转
+ * 旋转数组
  */
 /**
  * @param {number[]} nums
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+// var rotate = function(nums, k) {
+//     let a =  nums.reverse().slice(0,k).reverse()
+//     let b = nums.slice(k,nums.length).reverse()
+//     return a.concat(b) 
+// };
+
 var rotate = function(nums, k) {
-    let a =  nums.reverse().slice(0,k).reverse()
-    let b = nums.slice(k,nums.length).reverse()
-    return a.concat(b) 
+   
+    var n = nums.length;
+    k %= n;
+    if(n == 1){
+        return;
+    }
+    var tmp = 0;
+    reverse(0,n-1);// 整体翻转
+    reverse(0,k-1);// 该位置翻转
+    reverse(k,n-1);// 后半部分翻转
+    function reverse(start,end) {
+        while (start < end) {
+            tmp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = tmp;
+            start++;
+            end--;
+        }
+    }
 };
-/// 为何此法不通过？
