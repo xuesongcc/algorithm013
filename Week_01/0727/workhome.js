@@ -32,3 +32,17 @@ var twoSum = function(nums, target) {
         }
     }
 };
+/**
+ * 两数旋转
+ */
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var rotate = function(nums, k) {
+    let a =  nums.reverse().slice(0,k).reverse()
+    let b = nums.slice(k,nums.length).reverse()
+    return a.concat(b) 
+};
+/// 为何此法不通过？
