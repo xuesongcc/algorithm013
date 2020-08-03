@@ -26,21 +26,23 @@ var maxDepth = function(root) {
  * @param {*} nums 
  * @param {*} target 
  */
-var twoSum = function(nums, target) {
+var twoSumMutation = function(nums, target) {
     let map= {}
     let loop = 0;
-    
     let dis;
-    let arr = []
+    let result = []
+    let resultIndex = []
     while(loop< nums.length){
         dis = target - nums[loop]       
         if(map[dis] != undefined){
-            return [map[dis] ,loop]
+            result.push(dis,nums[loop])
+            resultIndex.push(map[dis],loop)
         }
         // 记录map
         map[nums[loop]] = loop
         loop++
     }
-    return 'Not found'
+    // return resultIndex
+    return result 
 };
-console.log(twoSum([2,4,11,33],9))
+console.log(twoSumMutation([2,4,5,1,8,7,11,33],9))
